@@ -1,11 +1,33 @@
 import { ArcButton, ArcButtonOptions, ArcButtonStyleMode, ColorMetrics } from '@kit.ArkUI';
-import { MediaController } from '../utils/MediaController';
 import { HomeViewModel } from '../viewmodel/HomeViewModel';
-import { SongData } from '../model/SongData';
+import { image } from '@kit.ImageKit';
+import { common } from '@kit.AbilityKit';
+import { ImageBlur } from '../utils/ImageBlur';
 
 @Component
 export struct HomePage {
   homeVm: HomeViewModel = new HomeViewModel();
+  @State imagePixelMap: image.PixelMap | null = null;
+  private imageBuffer: ArrayBuffer | undefined = undefined;
+
+  async getFileBuffer(): Promise<ArrayBuffer | undefined> {
+    try{
+      const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const fileData: Uint8Array = await context.resourceManager.getRawFileContent('home_bg.jpg');
+      const buffer: ArrayBuffer = fileData.buffer.slice(0);
+      return buffer;
+    }catch (err){
+      return undefined
+    }
+  }
+
+  async aboutToAppear(): Promise<void>{
+    this.imageBuffer = await this.getFileBuffer();
+    if(this.imageBuffer === undefined){
+      return;
+    }
+    this.imagePixelMap = await ImageBlur(this.imageBuffer);
+  }
 
   build() {
     Stack({alignContent: Alignment.Center}) {
@@ -24,8 +46,7 @@ export struct HomePage {
       }
       .zIndex(2)
 
-      Image($r('app.media.home_bg'))
-        .blur(9)
+      Image(this.imagePixelMap)
         .zIndex(1)
         .width('100%')
         .height('100%')

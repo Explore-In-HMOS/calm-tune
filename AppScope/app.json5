@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.hmosdemos.calmtune",
+    "bundleName": "com.hmosdemos.wearable.calm_tune",
     "vendor": "hmosdemos",
     "versionCode": 1000000,
     "versionName": "1.0.0",

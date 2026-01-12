@@ -15,7 +15,7 @@ export class DataModel {
       artist: 'Delacey',
       artwork: $r('app.media.ic_dream_it'),
       src: 'lofi2.mp3'
-    },
+    }
   ]
 
   public static readonly RAIN: SongData[] = [
@@ -32,7 +32,7 @@ export class DataModel {
       artist: 'Delacey',
       artwork: $r('app.media.ic_dream_it'),
       src: 'rain2.mp3'
-    },
+    }
   ]
 
   public static readonly COFFEE_SHOP: SongData[] = [
@@ -49,7 +49,7 @@ export class DataModel {
       artist: 'Delacey',
       artwork: $r('app.media.ic_dream_it'),
       src: 'coffee_shop2.mp3'
-    },
+    }
   ]
 
   public static readonly FIREPLACE: SongData[] = [
@@ -66,7 +66,7 @@ export class DataModel {
       artist: 'Delacey',
       artwork: $r('app.media.ic_dream_it'),
       src: 'fireplace2.mp3'
-    },
+    }
   ]
 
   public static readonly WAVES_OCEAN: SongData[] = [
@@ -83,7 +83,7 @@ export class DataModel {
       artist: 'Delacey',
       artwork: $r('app.media.ic_dream_it'),
       src: 'waves_ocean2.mp3'
-    },
+    }
   ]
   public static readonly FOREST_BIRDS: SongData[] = [
     {
@@ -99,7 +99,7 @@ export class DataModel {
       artist: 'Delacey',
       artwork: $r('app.media.ic_dream_it'),
       src: 'birds2.mp3'
-    },
+    }
   ]
 
   public static readonly WHITE_NOISE: SongData[] = [
@@ -116,6 +116,6 @@ export class DataModel {
       artist: 'Delacey',
       artwork: $r('app.media.ic_dream_it'),
       src: 'white_noise2.mp3'
-    },
+    }
   ]
 }

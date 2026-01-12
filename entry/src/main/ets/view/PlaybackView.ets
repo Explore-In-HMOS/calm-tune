@@ -55,7 +55,7 @@ export struct PlaybackView {
         .padding({
           left: 4,
           right: 4,
-          bottom: 8,
+          bottom: 8
         })
         .width('100%')
         .justifyContent(FlexAlign.SpaceAround)

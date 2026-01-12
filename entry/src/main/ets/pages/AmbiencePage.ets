@@ -2,6 +2,9 @@ import { ArcList, ArcListItem, ArcListAttribute, ArcListItemAttribute, Component
 import { AMBIENCES, AMBIENCE_ENUMS } from '../viewmodel/Ambiences';
 import { AmbienceViewModel } from '../viewmodel/AmbienceViewModel';
 import { DataModel } from '../viewmodel/DataModel';
+import { image } from '@kit.ImageKit';
+import { common } from '@kit.AbilityKit';
+import { ImageBlur } from '../utils/ImageBlur';
 
 @Builder
 function buildText() {
@@ -21,6 +24,28 @@ export struct AmbiencePage {
   @State showLoading : boolean = false
   ambienceVm : AmbienceViewModel = new AmbienceViewModel()
 
+  @State imagePixelMap: image.PixelMap | null = null;
+  private imageBuffer: ArrayBuffer | undefined = undefined;
+
+  async getFileBuffer(): Promise<ArrayBuffer | undefined> {
+    try{
+      const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const fileData: Uint8Array = await context.resourceManager.getRawFileContent('ambience_bg.jpg');
+      const buffer: ArrayBuffer = fileData.buffer.slice(0);
+      return buffer;
+    }catch (err){
+      return undefined
+    }
+  }
+
+  async aboutToAppear(): Promise<void>{
+    this.imageBuffer = await this.getFileBuffer();
+    if(this.imageBuffer === undefined){
+      return;
+    }
+    this.imagePixelMap = await ImageBlur(this.imageBuffer);
+  }
+
   build() {
     Stack() {
       LoadingProgress()
@@ -29,9 +54,8 @@ export struct AmbiencePage {
         .zIndex(4)
         .enableLoading(this.showLoading)
 
-      Image($r('app.media.ambience_bg'))
+      Image(this.imagePixelMap)
         .objectFit(ImageFit.Fill)
-        .blur(8)
         .zIndex(1)
         .width('100%')
         .height('100%')
@@ -43,7 +67,7 @@ export struct AmbiencePage {
       ArcList({
         initialIndex: 0, header: this.header
       }) {
-        ForEach(AMBIENCES, (item: string, index) => {
+        ForEach(AMBIENCES, (item: string, index: number) => {
           ArcListItem() {
             Row({space: 20}) {
               Text(item)
@@ -55,7 +79,7 @@ export struct AmbiencePage {
               left: 26,
               bottom: 12,
               top: 12,
-              right: 26,
+              right: 26
             })
             .backgroundColor('#7ab06b3e')
             .width('100%')
@@ -85,7 +109,7 @@ export struct AmbiencePage {
           })
           .width('90%')
           .margin({ bottom: 10 })
-        }, (item: string) => item);
+        }, (item: string, index: number) => item);
       }
       .visibility(this.showLoading ? Visibility.Hidden : Visibility.Visible)
       .scrollBar(BarState.Off)

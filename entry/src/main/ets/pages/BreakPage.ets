@@ -5,7 +5,7 @@ import { MusicViewModel } from '../viewmodel/MusicViewModel';
 export struct BreakPage {
   @State count: number = 300000
   textTimerController: TextTimerController = new TextTimerController()
-  @State format: string = 'mm:ss'
+  format: string = 'mm:ss'
   @State currCount : number = 0
   musicVm : MusicViewModel = new MusicViewModel()
 

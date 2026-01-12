@@ -2,11 +2,8 @@
 
 # CalmTune
 
-
 CalmTune is a HarmonyOS Next wearable app that combines the Pomodoro technique with relaxing ambience music.
 Users can choose from different background sounds (like rain, lofi, or coffee shop) to stay focused during a 25-minute Pomodoro session. When the session ends, the app switches to a break page.
-
-<br/>
 
 # Preview
 
@@ -15,9 +12,8 @@ Users can choose from different background sounds (like rain, lofi, or coffee sh
   <img src="./screenshots/2.png" width="24%">
   <img src="./screenshots/3.png" width="24%">
   <img src="./screenshots/4.png" width="24%">
-</div>
 
-<br/>
+</div>
 
 # Use Cases
 
@@ -33,8 +29,6 @@ Users can choose from different background sounds (like rain, lofi, or coffee sh
 
 - Automatically switch to a break page when the session ends.
 
-<br/>
-
 # Technology
 
 ## Stack
@@ -49,8 +43,6 @@ Users can choose from different background sounds (like rain, lofi, or coffee sh
 ## Required Permissions
 
 - `ohos.permission.KEEP_BACKGROUND_RUNNING`
-
-<br/>
 
 # Directory Structure
 ```
@@ -93,14 +85,10 @@ entry/src/main/ets/
 └── build-profile.json5             # Build, signing, and SDK info
 ```
 
-<br/>
-
 # Constraints and Restrictions
 
 ## Supported Device
 - Huawei Watch 5
-
-<br/>
 
 # License
 

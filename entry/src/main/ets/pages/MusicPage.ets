@@ -12,9 +12,8 @@ export struct MusicPage {
   musicVm : MusicViewModel = new MusicViewModel()
 
   textTimerController: TextTimerController = new TextTimerController()
-  @State format: string = 'mm:ss'
+  format: string = 'mm:ss'
   @State count: number = 1500000
-  @State songs: SongData[] = [];
 
   @Prop isPlaying : boolean = true
   @State currCount : number = 0
@@ -29,8 +28,6 @@ export struct MusicPage {
   @StorageLink('progressMax') max: number = 0;
 
   aboutToAppear(): void {
-   /* this.songs = DataModel.SONG_LIST
-    AppStorage.setOrCreate('songList', this.songs);*/
     MediaController.getInstance();
   }
 
