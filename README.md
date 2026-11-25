@@ -2,7 +2,7 @@
 
 # CalmTune
 
-CalmTune is a HarmonyOS Next wearable app that combines the Pomodoro technique with relaxing ambience music.
+CalmTune is a HarmonyOS wearable app that combines the Pomodoro technique with relaxing ambience music.
 Users can choose from different background sounds (like rain, lofi, or coffee shop) to stay focused during a 25-minute Pomodoro session. When the session ends, the app switches to a break page.
 
 # Preview
